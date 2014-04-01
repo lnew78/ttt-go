@@ -3,6 +3,10 @@ package ttt
 type TicTacToeRules struct {
 }
 
+const XMARK string  = "x"
+const OMARK string  = "o"
+const NOWINNER string = "none"
+
 func (tttRules *TicTacToeRules) Rows(board *Board) ([]string, []string, []string) {
   row1 := []string{board.spaces[0], board.spaces[1], board.spaces[2]}
   row2 := []string{board.spaces[3], board.spaces[4], board.spaces[5]}
@@ -37,22 +41,31 @@ func (tttRules *TicTacToeRules) checkCombos(board *Board) string {
 }
 
 func (tttRules *TicTacToeRules) checkForWinner(winningCombos [][]string) string {
-  xCount := 0
-  oCount := 0
+  winner := ""
   for i := range winningCombos {
-    for _,mark := range winningCombos[i] {
-      if mark == "x" {
-        xCount++
-      } else if mark == "o" {
-        oCount++
-      }
-
-      if xCount == 3 {
-        return "x"
-      } else if oCount == 3 {
-        return "o"
-      }
+    winner = tttRules.checkComboForWinner(winningCombos[i])
+    if winner != NOWINNER {
+      break
     }
   }
-  return "none"
+  return winner
+}
+
+func (tttRules *TicTacToeRules) checkComboForWinner(winningCombo []string) string {
+  xCount := 0
+  oCount := 0
+  for _,mark := range winningCombo {
+        if mark == XMARK {
+          xCount++
+        } else if mark == OMARK {
+          oCount++
+        }
+
+        if xCount == 3 {
+          return XMARK
+        } else if oCount == 3 {
+          return OMARK
+        }
+      }
+  return NOWINNER
 }
