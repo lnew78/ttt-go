@@ -1,0 +1,35 @@
+package ttt
+
+import(
+  "fmt"
+  "bufio"
+  "os"
+)
+
+type UI struct{}
+
+func (ui UI) PrintMsg(message string) {
+  fmt.Println(message)
+}
+
+func (ui UI) GetInput() string {
+  in := bufio.NewReader(os.Stdin);
+  input, err := in.ReadString('\n');
+  if err != nil {
+    fmt.Println(err)
+  }
+  return input
+}
+
+func (ui UI) PrintBoard(tttRules TicTacToeRules, board *Board) {
+  row1, row2, row3 := tttRules.Rows(board)
+  rows := [][]string{row1, row2, row3}
+  for index1 := range rows {
+    for index2 := range rows {
+      fmt.Println(rows[index1][index2])
+      if index2 == len(rows) - 1 {
+        fmt.Println("\n")
+      }
+    }
+  }
+}
