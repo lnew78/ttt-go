@@ -30,4 +30,25 @@ var _ = Describe("Board", func() {
       Expect(board.Spaces()).To(Equal(testArray))
     })
 
+    It("Full when all spaces are filled", func() {
+      board.FillSpaceAt(1, "x")
+      board.FillSpaceAt(2, "o")
+      board.FillSpaceAt(3, "x")
+      board.FillSpaceAt(4, "x")
+      board.FillSpaceAt(5, "o")
+      board.FillSpaceAt(6, "x")
+      board.FillSpaceAt(7, "o")
+      board.FillSpaceAt(8, "x")
+      board.FillSpaceAt(9, "o")
+
+      Expect(board.IsFull()).To(Equal(true))
+    })
+
+    It("Not full when all spaces are not filled", func() {
+      board.InitializeSpaces()
+      board.FillSpaceAt(5, "o")
+
+      Expect(board.IsFull()).To(Equal(false))
+    })
+
 })

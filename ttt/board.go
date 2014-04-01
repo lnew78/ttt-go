@@ -37,6 +37,16 @@ func (board *Board) ResetSpaceAt(space int) {
   board.spaces[space - 1] = strconv.Itoa(space)
 }
 
-func (board *Board) isSpaceAvailableAt(space int) bool{
+func (board *Board) isSpaceAvailableAt(space int) bool {
   return board.spaces[space - 1] == strconv.Itoa(space)
+}
+
+func (board *Board) IsFull() bool {
+  spaceTakenCount := 0
+  for i := 1; i <=  len(board.spaces); i++ {
+    if !board.isSpaceAvailableAt(i) {
+      spaceTakenCount++
+    }
+  }
+  return spaceTakenCount == 9
 }
