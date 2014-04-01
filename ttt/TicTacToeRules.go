@@ -83,3 +83,7 @@ func (tttRules *TicTacToeRules) NextPlayerMark(board *Board) string {
   }
   return mark
 }
+
+func (tttRules *TicTacToeRules) IsGameOver(board *Board) bool {
+  return tttRules.Winner(board) != "none" || tttRules.IsTie(board)
+}

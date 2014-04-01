@@ -108,4 +108,28 @@ var _ = Describe("TicTacToeRules", func() {
     Expect(tttRules.NextPlayerMark(board)).To(Equal("x"))
   })
 
+  It("Game is over if there's a winner", func() {
+    board.InitializeSpaces()
+
+    board.FillSpaceAt(1, "x")
+    board.FillSpaceAt(2, "x")
+    board.FillSpaceAt(3, "x")
+
+    Expect(tttRules.IsGameOver(board)).To(Equal(true))
+  })
+
+  It("Game is over if there's a tie", func() {
+    board.InitializeSpaces()
+    board.FillSpaceAt(1, "x")
+    board.FillSpaceAt(2, "o")
+    board.FillSpaceAt(3, "x")
+    board.FillSpaceAt(4, "x")
+    board.FillSpaceAt(5, "o")
+    board.FillSpaceAt(6, "x")
+    board.FillSpaceAt(7, "o")
+    board.FillSpaceAt(8, "x")
+    board.FillSpaceAt(9, "o")
+
+    Expect(tttRules.IsGameOver(board)).To(Equal(true))
+  })
 })
