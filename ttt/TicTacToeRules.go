@@ -55,17 +55,17 @@ func (tttRules *TicTacToeRules) checkComboForWinner(winningCombo []string) strin
   xCount := 0
   oCount := 0
   for _,mark := range winningCombo {
-        if mark == XMARK {
-          xCount++
-        } else if mark == OMARK {
-          oCount++
-        }
+    if mark == XMARK {
+      xCount++
+    } else if mark == OMARK {
+      oCount++
+    }
 
-        if xCount == 3 {
-          return XMARK
-        } else if oCount == 3 {
-          return OMARK
-        }
-      }
+    if xCount == 3 {
+      return XMARK
+    } else if oCount == 3 {
+      return OMARK
+    }
+  }
   return NOWINNER
 }
