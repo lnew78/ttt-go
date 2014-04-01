@@ -27,6 +27,10 @@ func (tttRules *TicTacToeRules) Diagonals(board *Board) ([]string, []string) {
   return diag1, diag2
 }
 
+func (tttRules *TicTacToeRules) IsTie(board *Board) bool {
+ return board.IsFull() && tttRules.Winner(board) == "none"
+}
+
 func (tttRules *TicTacToeRules) Winner(board *Board) string {
   return tttRules.checkCombos(board)
 }

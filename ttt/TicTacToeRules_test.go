@@ -38,6 +38,30 @@ var _ = Describe("TicTacToeRules", func() {
     Expect(diag2).To(Equal(testDiag2))
   })
 
+  Context("Determine a tie game", func() {
+    It("Tie game if board is full and there's no winner", func() {
+      board.FillSpaceAt(1, "x")
+      board.FillSpaceAt(2, "o")
+      board.FillSpaceAt(3, "x")
+      board.FillSpaceAt(4, "x")
+      board.FillSpaceAt(5, "0")
+      board.FillSpaceAt(6, "x")
+      board.FillSpaceAt(7, "o")
+      board.FillSpaceAt(8, "x")
+      board.FillSpaceAt(9, "o")
+
+     Expect(tttRules.IsTie(board)).To(Equal(true))
+    })
+
+    It("is not a tie game if the board isn't full and there is no winner", func() {
+      board.InitializeSpaces()
+
+      board.FillSpaceAt(8, "x")
+      board.FillSpaceAt(9, "o")
+
+      Expect(tttRules.IsTie(board)).To(Equal(false))
+    })
+  })
 
   Context("Determine a winner", func() {
     It("Check rows", func() {
