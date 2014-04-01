@@ -42,11 +42,19 @@ func (board *Board) isSpaceAvailableAt(space int) bool {
 }
 
 func (board *Board) IsFull() bool {
-  spaceTakenCount := 0
+    return board.spaceAvailableCount() == 0
+}
+
+func (board *Board) NumberOfAvailableSpaces() int {
+  return board.spaceAvailableCount()
+}
+
+func (board *Board) spaceAvailableCount() int {
+  spaceAvailableCount := 0
   for i := 1; i <=  len(board.spaces); i++ {
-    if !board.isSpaceAvailableAt(i) {
-      spaceTakenCount++
+    if board.isSpaceAvailableAt(i) {
+      spaceAvailableCount++
     }
   }
-  return spaceTakenCount == 9
+  return spaceAvailableCount
 }

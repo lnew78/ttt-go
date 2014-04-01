@@ -73,3 +73,13 @@ func (tttRules *TicTacToeRules) checkComboForWinner(winningCombo []string) strin
   }
   return NOWINNER
 }
+
+func (tttRules *TicTacToeRules) NextPlayerMark(board *Board) string {
+  mark := ""
+  if board.NumberOfAvailableSpaces() % 2 == 0 {
+     mark = OMARK
+  } else {
+    mark = XMARK
+  }
+  return mark
+}

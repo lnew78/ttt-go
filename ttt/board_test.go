@@ -51,4 +51,11 @@ var _ = Describe("Board", func() {
       Expect(board.IsFull()).To(Equal(false))
     })
 
+    It("Get count of available spaces", func() {
+      board.InitializeSpaces()
+      Expect(board.NumberOfAvailableSpaces()).To(Equal(9))
+      board.FillSpaceAt(1, "x")
+      Expect(board.NumberOfAvailableSpaces()).To(Equal(8))
+    })
+
 })

@@ -94,4 +94,18 @@ var _ = Describe("TicTacToeRules", func() {
       Expect(tttRules.Winner(board)).To(Equal("x"))
     })
   })
+
+  It("'O' makes move if available space count is even", func() {
+    board.InitializeSpaces()
+    board.FillSpaceAt(5, "x")
+
+    Expect(tttRules.NextPlayerMark(board)).To(Equal("o"))
+  })
+
+  It("'X' makes moves if available space count is even", func() {
+    board.InitializeSpaces()
+
+    Expect(tttRules.NextPlayerMark(board)).To(Equal("x"))
+  })
+
 })
