@@ -132,4 +132,12 @@ var _ = Describe("TicTacToeRules", func() {
 
     Expect(tttRules.IsGameOver(board)).To(Equal(true))
   })
+
+  It("Check for valid mark", func() {
+    Expect(tttRules.IsMarkValid("x")).To(Equal(true))
+    Expect(tttRules.IsMarkValid("X")).To(Equal(true))
+    Expect(tttRules.IsMarkValid("o")).To(Equal(true))
+    Expect(tttRules.IsMarkValid("O")).To(Equal(true))
+    Expect(tttRules.IsMarkValid("b")).To(Equal(false))
+  })
 })

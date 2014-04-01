@@ -1,5 +1,7 @@
 package ttt
 
+import "strings"
+
 type TicTacToeRules struct {
 }
 
@@ -86,4 +88,8 @@ func (tttRules *TicTacToeRules) NextPlayerMark(board *Board) string {
 
 func (tttRules *TicTacToeRules) IsGameOver(board *Board) bool {
   return tttRules.Winner(board) != "none" || tttRules.IsTie(board)
+}
+
+func (tttRules TicTacToeRules) IsMarkValid(mark string) bool {
+  return strings.ToLower(mark) == XMARK || strings.ToLower(mark) == OMARK
 }
