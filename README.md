@@ -1,4 +1,6 @@
-If you don't have it already,iInstall Go by running:
+*A work in progress*
+
+If you don't have it already, install Go by running:
 brew install go
 
 for tests
