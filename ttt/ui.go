@@ -26,7 +26,8 @@ func (ui UI) PrintBoard(tttRules TicTacToeRules, board *Board) {
   rows := [][]string{row1, row2, row3}
   for index1 := range rows {
     for index2 := range rows {
-      fmt.Println(rows[index1][index2])
+      fmt.Print(rows[index1][index2])
+      fmt.Print(" | ")
       if index2 == len(rows) - 1 {
         fmt.Println("\n")
       }
