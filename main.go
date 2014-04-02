@@ -5,7 +5,7 @@ import "ttt-go/ttt"
 func main() {
   board := ttt.NewBoard(9)
   ui := new(ttt.UI)
-  ttt.NewGame(ui)
+  pg := PlayerGenerator{}
   tttRules := ttt.NewRules(board)
-  ui.PrintBoard(tttRules)
+  ttt.NewGame(ui, pg)
 }
