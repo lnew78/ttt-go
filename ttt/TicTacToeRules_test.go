@@ -8,13 +8,13 @@ import (
 
 var _ = Describe("TicTacToeRules", func() {
   var board = NewBoard(9)
-  var tttRules = new (TicTacToeRules)
+  var tttRules = NewRules(board)
 
   It("Get the board's rows", func() {
     testRow1 := []string{"1", "2", "3"}
     testRow2 := []string{"4", "5", "6"}
     testRow3 := []string{"7", "8", "9"}
-    row1,row2, row3 := tttRules.Rows(board)
+    row1,row2, row3 := tttRules.Rows()
     Expect(row1).To(Equal(testRow1))
     Expect(row2).To(Equal(testRow2))
     Expect(row3).To(Equal(testRow3))

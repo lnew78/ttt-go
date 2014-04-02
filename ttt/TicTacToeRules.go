@@ -3,16 +3,23 @@ package ttt
 import "strings"
 
 type TicTacToeRules struct {
+  board *Board
 }
 
 const XMARK string  = "x"
 const OMARK string  = "o"
 const NOWINNER string = "none"
 
-func (tttRules TicTacToeRules) Rows(board *Board) ([]string, []string, []string) {
-  row1 := []string{board.spaces[0], board.spaces[1], board.spaces[2]}
-  row2 := []string{board.spaces[3], board.spaces[4], board.spaces[5]}
-  row3 := []string{board.spaces[6], board.spaces[7], board.spaces[8]}
+func NewRules(board *Board) TicTacToeRules {
+  tttRules := TicTacToeRules{}
+  tttRules.board = board
+  return tttRules
+}
+
+func (tttRules TicTacToeRules) Rows() ([]string, []string, []string) {
+  row1 := []string{tttRules.board.spaces[0], tttRules.board.spaces[1], tttRules.board.spaces[2]}
+  row2 := []string{tttRules.board.spaces[3], tttRules.board.spaces[4], tttRules.board.spaces[5]}
+  row3 := []string{tttRules.board.spaces[6], tttRules.board.spaces[7], tttRules.board.spaces[8]}
   return row1, row2, row3
 }
 
@@ -38,7 +45,7 @@ func (tttRules TicTacToeRules) Winner(board *Board) string {
 }
 
 func (tttRules TicTacToeRules) checkCombos(board *Board) string {
-  row1, row2, row3 := tttRules.Rows(board)
+  row1, row2, row3 := tttRules.Rows()
   col1, col2, col3 := tttRules.Columns(board)
   diag1, diag2 := tttRules.Diagonals(board)
   winningCombos := [][]string{row1, row2, row3, col1, col2, col3, diag1, diag2}
