@@ -23,31 +23,31 @@ func (tttRules TicTacToeRules) Rows() ([]string, []string, []string) {
   return row1, row2, row3
 }
 
-func (tttRules TicTacToeRules) Columns(board *Board) ([]string, []string, []string) {
-  col1 := []string{board.spaces[0], board.spaces[3], board.spaces[6]}
-  col2 := []string{board.spaces[1], board.spaces[4], board.spaces[7]}
-  col3 := []string{board.spaces[2], board.spaces[5], board.spaces[8]}
+func (tttRules TicTacToeRules) Columns() ([]string, []string, []string) {
+  col1 := []string{tttRules.board.spaces[0], tttRules.board.spaces[3], tttRules.board.spaces[6]}
+  col2 := []string{tttRules.board.spaces[1], tttRules.board.spaces[4], tttRules.board.spaces[7]}
+  col3 := []string{tttRules.board.spaces[2], tttRules.board.spaces[5], tttRules.board.spaces[8]}
   return col1, col2, col3
 }
 
-func (tttRules TicTacToeRules) Diagonals(board *Board) ([]string, []string) {
-  diag1 := []string{board.spaces[0], board.spaces[4], board.spaces[8]}
-  diag2 := []string{board.spaces[2], board.spaces[4], board.spaces[6]}
+func (tttRules TicTacToeRules) Diagonals() ([]string, []string) {
+  diag1 := []string{tttRules.board.spaces[0], tttRules.board.spaces[4], tttRules.board.spaces[8]}
+  diag2 := []string{tttRules.board.spaces[2], tttRules.board.spaces[4], tttRules.board.spaces[6]}
   return diag1, diag2
 }
 
-func (tttRules TicTacToeRules) IsTie(board *Board) bool {
- return board.IsFull() && tttRules.Winner(board) == "none"
+func (tttRules TicTacToeRules) IsTie() bool {
+ return tttRules.board.IsFull() && tttRules.Winner() == "none"
 }
 
-func (tttRules TicTacToeRules) Winner(board *Board) string {
-  return tttRules.checkCombos(board)
+func (tttRules TicTacToeRules) Winner() string {
+  return tttRules.checkCombos()
 }
 
-func (tttRules TicTacToeRules) checkCombos(board *Board) string {
+func (tttRules TicTacToeRules) checkCombos() string {
   row1, row2, row3 := tttRules.Rows()
-  col1, col2, col3 := tttRules.Columns(board)
-  diag1, diag2 := tttRules.Diagonals(board)
+  col1, col2, col3 := tttRules.Columns()
+  diag1, diag2 := tttRules.Diagonals()
   winningCombos := [][]string{row1, row2, row3, col1, col2, col3, diag1, diag2}
   winner := tttRules.checkForWinner(winningCombos)
   return winner
@@ -83,9 +83,9 @@ func (tttRules TicTacToeRules) checkComboForWinner(winningCombo []string) string
   return NOWINNER
 }
 
-func (tttRules TicTacToeRules) NextPlayerMark(board *Board) string {
+func (tttRules TicTacToeRules) NextPlayerMark() string {
   mark := ""
-  if board.NumberOfAvailableSpaces() % 2 == 0 {
+  if tttRules.board.NumberOfAvailableSpaces() % 2 == 0 {
      mark = OMARK
   } else {
     mark = XMARK
@@ -93,8 +93,8 @@ func (tttRules TicTacToeRules) NextPlayerMark(board *Board) string {
   return mark
 }
 
-func (tttRules TicTacToeRules) IsGameOver(board *Board) bool {
-  return tttRules.Winner(board) != "none" || tttRules.IsTie(board)
+func (tttRules TicTacToeRules) IsGameOver() bool {
+  return tttRules.Winner() != "none" || tttRules.IsTie()
 }
 
 func (tttRules TicTacToeRules) IsMarkValid(mark string) bool {

@@ -7,5 +7,5 @@ func main() {
   ui := new(ttt.UI)
   pg := ttt.PlayerGenerator{}
   tttRules := ttt.NewRules(board)
-  ttt.NewGame(ui, pg, tttRules)
+  ttt.NewGame(ui, pg, tttRules, board)
 }

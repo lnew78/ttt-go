@@ -24,7 +24,7 @@ var _ = Describe("TicTacToeRules", func() {
     testCol1 := []string{"1", "4", "7"}
     testCol2 := []string{"2", "5", "8"}
     testCol3 := []string{"3", "6", "9"}
-    col1, col2, col3 := tttRules.Columns(board)
+    col1, col2, col3 := tttRules.Columns()
     Expect(col1).To(Equal(testCol1))
     Expect(col2).To(Equal(testCol2))
     Expect(col3).To(Equal(testCol3))
@@ -33,7 +33,7 @@ var _ = Describe("TicTacToeRules", func() {
   It("Get the board's diagonals", func() {
     testDiag1 := []string{"1", "5", "9"}
     testDiag2 := []string{"3", "5", "7"}
-    diag1, diag2 := tttRules.Diagonals(board)
+    diag1, diag2 := tttRules.Diagonals()
     Expect(diag1).To(Equal(testDiag1))
     Expect(diag2).To(Equal(testDiag2))
   })
@@ -50,7 +50,7 @@ var _ = Describe("TicTacToeRules", func() {
       board.FillSpaceAt(8, "x")
       board.FillSpaceAt(9, "o")
 
-     Expect(tttRules.IsTie(board)).To(Equal(true))
+     Expect(tttRules.IsTie()).To(Equal(true))
     })
 
     It("is not a tie game if the board isn't full and there is no winner", func() {
@@ -59,7 +59,7 @@ var _ = Describe("TicTacToeRules", func() {
       board.FillSpaceAt(8, "x")
       board.FillSpaceAt(9, "o")
 
-      Expect(tttRules.IsTie(board)).To(Equal(false))
+      Expect(tttRules.IsTie()).To(Equal(false))
     })
   })
 
@@ -71,7 +71,7 @@ var _ = Describe("TicTacToeRules", func() {
       board.FillSpaceAt(2, "x")
       board.FillSpaceAt(3, "x")
 
-      Expect(tttRules.Winner(board)).To(Equal("x"))
+      Expect(tttRules.Winner()).To(Equal("x"))
     })
 
     It("Check columns", func() {
@@ -81,7 +81,7 @@ var _ = Describe("TicTacToeRules", func() {
       board.FillSpaceAt(5, "o")
       board.FillSpaceAt(8, "o")
 
-      Expect(tttRules.Winner(board)).To(Equal("o"))
+      Expect(tttRules.Winner()).To(Equal("o"))
     })
 
     It("Check diagonals", func() {
@@ -91,7 +91,7 @@ var _ = Describe("TicTacToeRules", func() {
       board.FillSpaceAt(5, "x")
       board.FillSpaceAt(7, "x")
 
-      Expect(tttRules.Winner(board)).To(Equal("x"))
+      Expect(tttRules.Winner()).To(Equal("x"))
     })
   })
 
@@ -99,13 +99,13 @@ var _ = Describe("TicTacToeRules", func() {
     board.InitializeSpaces()
     board.FillSpaceAt(5, "x")
 
-    Expect(tttRules.NextPlayerMark(board)).To(Equal("o"))
+    Expect(tttRules.NextPlayerMark()).To(Equal("o"))
   })
 
   It("'X' makes moves if available space count is even", func() {
     board.InitializeSpaces()
 
-    Expect(tttRules.NextPlayerMark(board)).To(Equal("x"))
+    Expect(tttRules.NextPlayerMark()).To(Equal("x"))
   })
 
   It("Game is over if there's a winner", func() {
@@ -115,7 +115,7 @@ var _ = Describe("TicTacToeRules", func() {
     board.FillSpaceAt(2, "x")
     board.FillSpaceAt(3, "x")
 
-    Expect(tttRules.IsGameOver(board)).To(Equal(true))
+    Expect(tttRules.IsGameOver()).To(Equal(true))
   })
 
   It("Game is over if there's a tie", func() {
@@ -130,7 +130,7 @@ var _ = Describe("TicTacToeRules", func() {
     board.FillSpaceAt(8, "x")
     board.FillSpaceAt(9, "o")
 
-    Expect(tttRules.IsGameOver(board)).To(Equal(true))
+    Expect(tttRules.IsGameOver()).To(Equal(true))
   })
 
   It("Check for valid mark", func() {
