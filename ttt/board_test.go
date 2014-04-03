@@ -58,4 +58,10 @@ var _ = Describe("Board", func() {
       Expect(board.NumberOfAvailableSpaces()).To(Equal(8))
     })
 
+    It("Get list of availlable spaces", func() {
+      testArray :=  []string{"2", "3", "4", "5", "6", "7", "8", "9"}
+      board.InitializeSpaces()
+      board.FillSpaceAt(1, "x")
+      Expect(board.AvailableSpaces()).To(Equal(testArray))
+    })
 })

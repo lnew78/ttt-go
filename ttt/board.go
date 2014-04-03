@@ -58,3 +58,13 @@ func (board *Board) spaceAvailableCount() int {
   }
   return spaceAvailableCount
 }
+
+func (board *Board) AvailableSpaces() []string {
+  availableSpaces := []string{}
+  for i := 1; i <= board.NumberOfAvailableSpaces() + 1; i++ {
+    if board.IsSpaceAvailableAt(i) {
+      availableSpaces = append(availableSpaces, strconv.Itoa(i ))
+    }
+  }
+  return availableSpaces
+}
