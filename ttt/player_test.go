@@ -9,11 +9,13 @@ import (
 var _ = Describe("Player", func() {
   var player = Player{}
 
-  It("Return the player's mark", func() {
-    Expect(player.Mark("x")).To(Equal("x"))
+  It("Player's mark can be set and retrieved", func() {
+    player.SetMark("x")
+    Expect(player.Mark()).To(Equal("x"))
   })
 
-  It("Return the player's move", func() {
-    Expect(player.Move(1)).To(Equal(1))
+  It("Player's move can be set and retrieved", func() {
+    player.SetMove(1)
+    Expect(player.Move()).To(Equal(1))
   })
 })
