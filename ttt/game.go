@@ -3,7 +3,6 @@ package ttt
 import(
   "strconv"
   "strings"
-  //"fmt"
 )
 
 type Game struct {
@@ -16,17 +15,14 @@ type Game struct {
 
 func NewGame(ui *UI, playerGenerator PlayerGenerator, tttRules TicTacToeRules) *Game {
   game := new(Game)
-  game.StartNewGame()
+  game.ui.PrintMsg("Welcome to Tic Tac Toe!")
   players := game.initPlayers(game.playerCount())
   game.player1 = players[0]
   game.player2 = players[1]
   player1Mark := game.getMarkChoice()
   game.setPlayerMarks(players, player1Mark)
+  game.ui.PrintBoard(tttRules)
   return game
-}
-
-func (game Game) StartNewGame() {
-  game.ui.PrintMsg("Welcome to Tic Tac Toe!")
 }
 
 func (game Game) playerCount() int {
@@ -59,11 +55,13 @@ func (game Game) getMarkChoice() string {
   }
 }
 
-func (game Game) setPlayerMarks(players []Player, firstPlayerMark string) {
+func (game *Game) setPlayerMarks(players []Player, firstPlayerMark string) {
   game.player1.SetMark(firstPlayerMark)
   if firstPlayerMark == "x" {
     game.player2.SetMark("o")
+    game.ui.PrintMsg("Great! Player 2, you will be 'o'!")
   } else {
     game.player2.SetMark("x")
+    game.ui.PrintMsg("Great! Player 2, you will be 'x'!")
   }
 }
