@@ -31,18 +31,11 @@ func NewGame(ui *UI, playerGenerator PlayerGenerator, tttRules TicTacToeRules, b
 }
 
 func (game Game) playerCount() int {
-  game.ui.PrintMsg("How many players are playing? -- Type '1' or '2' and press [Enter].")
-  input := strings.TrimSuffix(game.ui.GetInput(), "\n")
-
-  numberOfPlayers, err := strconv.Atoi(input)
-  if err != nil {
-    return game.playerCount()
-  }
+  numberOfPlayers := game.getNumericInput("How many players are playing? -- Type '1' or '2' and press [Enter].")
   if numberOfPlayers == 1 || numberOfPlayers == 2 {
     return numberOfPlayers
-  } else {
-    return game.playerCount()
   }
+  return game.playerCount()
 }
 
 func (game Game) initPlayers(playerCount int) []Player {
