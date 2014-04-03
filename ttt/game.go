@@ -3,6 +3,7 @@ package ttt
 import(
   "strconv"
   "strings"
+  "os"
 )
 
 type Game struct {
@@ -81,22 +82,31 @@ func (game Game) RunGameSequence() {
 }
 
 func (game Game) makeMove(player Player) {
-  game.getPlayerMove(player)
+  move := game.getPlayerMove(player)
+  game.board.FillSpaceAt(move, player.Mark())
+  game.ui.PrintBoard(game.tttRules)
   if game.tttRules.IsGameOver() {
     game.endGame()
   }
 }
 
-func (game Game) getPlayerMove(player Player) {
-  game.ui.PrintMsg("Make your move..........")
+func (game Game) getPlayerMove(player Player) int {
+  move := game.getNumericInput("Make your move.....")
+  if game.board.IsSpaceAvailableAt(move) {
+    return move
+  }
+  return game.getPlayerMove(player)
+}
+
+func (game Game) getNumericInput(message string) int {
+  game.ui.PrintMsg(message)
   input := strings.TrimSuffix(game.ui.GetInput(), "\n")
 
-  move, err := strconv.Atoi(input)
+  number, err := strconv.Atoi(input)
   if err != nil {
-    game.getPlayerMove(player)
+    return game.getNumericInput(message)
   }
-  game.board.FillSpaceAt(move, player.Mark())
-  game.ui.PrintBoard(game.tttRules)
+  return number
 }
 
 func (game Game) firstPlayerToMakeMove() Player {
@@ -116,5 +126,6 @@ func (game Game) secondPlayerToMakeMove() Player {
 }
 
 func (game Game) endGame() {
-  game.ui.PrintMsg("game blah blah")
+  game.ui.PrintMsg("Game Over. Blah blah blah")
+  os.Exit(0)
 }

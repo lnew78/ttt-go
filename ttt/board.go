@@ -28,7 +28,7 @@ func (board *Board) Spaces() []string {
 }
 
 func (board *Board) FillSpaceAt(space int, mark string) {
-  if board.isSpaceAvailableAt(space) {
+  if board.IsSpaceAvailableAt(space) {
     board.spaces[space - 1] = mark
   }
 }
@@ -37,7 +37,7 @@ func (board *Board) ResetSpaceAt(space int) {
   board.spaces[space - 1] = strconv.Itoa(space)
 }
 
-func (board *Board) isSpaceAvailableAt(space int) bool {
+func (board *Board) IsSpaceAvailableAt(space int) bool {
   return board.spaces[space - 1] == strconv.Itoa(space)
 }
 
@@ -52,7 +52,7 @@ func (board *Board) NumberOfAvailableSpaces() int {
 func (board *Board) spaceAvailableCount() int {
   spaceAvailableCount := 0
   for i := 1; i <=  len(board.spaces); i++ {
-    if board.isSpaceAvailableAt(i) {
+    if board.IsSpaceAvailableAt(i) {
       spaceAvailableCount++
     }
   }
