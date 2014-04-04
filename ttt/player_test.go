@@ -7,7 +7,7 @@ import (
 )
 
 var _ = Describe("Player", func() {
-  var player = Player{}
+  var player = Player{Type:"human"}
 
   It("Player's mark can be set and retrieved", func() {
     player.SetMark("x")
@@ -17,5 +17,11 @@ var _ = Describe("Player", func() {
   It("Player's move can be set and retrieved", func() {
     player.SetMove(1)
     Expect(player.Move()).To(Equal(1))
+  })
+
+  It("Player's type can be retrieved", func() {
+    Expect(player.Type).To(Equal("human"))
+    player2 := Player{Type:"computer"}
+    Expect(player2.Type).To(Equal("computer"))
   })
 })
