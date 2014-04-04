@@ -61,9 +61,11 @@ func (board *Board) spaceAvailableCount() int {
 
 func (board *Board) AvailableSpaces() []string {
   availableSpaces := []string{}
-  for i := 1; i <= board.NumberOfAvailableSpaces() + 1; i++ {
-    if board.IsSpaceAvailableAt(i) {
-      availableSpaces = append(availableSpaces, strconv.Itoa(i ))
+  for _, mark := range board.spaces {
+    if  mark == "x" || mark == "o" {
+      continue
+    } else {
+      availableSpaces = append(availableSpaces, mark)
     }
   }
   return availableSpaces
