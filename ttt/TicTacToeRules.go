@@ -64,6 +64,14 @@ func (tttRules TicTacToeRules) checkForWinner(winningCombos [][]string) string {
   return winner
 }
 
+func (tttRules TicTacToeRules) Mark(key string) string {
+  constants := make(map[string]string)
+  constants["XMARK"] = XMARK
+  constants["OMARK"] = OMARK
+
+  return constants[key]
+}
+
 func (tttRules TicTacToeRules) checkComboForWinner(winningCombo []string) string {
   xCount := 0
   oCount := 0

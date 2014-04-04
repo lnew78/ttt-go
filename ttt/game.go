@@ -19,9 +19,8 @@ func NewGame(ui *UI, playerGenerator PlayerGenerator, tttRules TicTacToeRules, b
   game := new(Game)
   game.board = board
   game.ui.PrintMsg("Welcome to Tic Tac Toe!")
-  players := game.initPlayers(game.playerCount())
-  game.player1 = players[0]
-  game.player2 = players[1]
+  players := game.generatePlayers(game.playerCount())
+  game.assignPlayers(players)
   player1Mark := game.getMarkChoice()
   game.setPlayerMarks(players, player1Mark)
   game.tttRules = tttRules
@@ -38,8 +37,17 @@ func (game Game) playerCount() int {
   return game.playerCount()
 }
 
-func (game Game) initPlayers(playerCount int) []Player {
+func (game Game) generatePlayers(playerCount int) []Player {
   return game.playerGenerator.GeneratePlayers(playerCount)
+}
+
+func (game Game) assignPlayers(humanPlayers []Player) {
+  if len(humanPlayers) == 1 {
+    game.player1 = humanPlayers[0]
+  } else if len(humanPlayers) == 2 {
+    game.player1 = humanPlayers[0]
+    game.player2 = humanPlayers[1]
+  }
 }
 
 func (game Game) getMarkChoice() string {
@@ -55,11 +63,11 @@ func (game Game) getMarkChoice() string {
 
 func (game *Game) setPlayerMarks(players []Player, firstPlayerMark string) {
   game.player1.SetMark(firstPlayerMark)
-  if firstPlayerMark == "x" {
-    game.player2.SetMark("o")
+  if firstPlayerMark == game.tttRules.Mark("XMARK") {
+    game.player2.SetMark(game.tttRules.Mark("OMARK"))
     game.ui.PrintMsg("Great! Player 2, you will be 'o'!")
   } else {
-    game.player2.SetMark("x")
+    game.player2.SetMark(game.tttRules.Mark("OMARK"))
     game.ui.PrintMsg("Great! Player 2, you will be 'x'!")
   }
 }

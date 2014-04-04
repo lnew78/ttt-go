@@ -140,4 +140,9 @@ var _ = Describe("TicTacToeRules", func() {
     Expect(tttRules.IsMarkValid("O")).To(Equal(true))
     Expect(tttRules.IsMarkValid("b")).To(Equal(false))
   })
+
+  It("Get constant values", func() {
+    Expect(tttRules.Mark("XMARK")).To(Equal("x"))
+    Expect(tttRules.Mark("OMARK")).To(Equal("o"))
+  })
 })
