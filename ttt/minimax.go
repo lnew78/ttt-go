@@ -2,6 +2,7 @@ package ttt
 
 import (
   "strconv"
+  "fmt"
 )
 
 type Minimax struct {
@@ -27,6 +28,7 @@ func (minimax Minimax) Move(depth int, bestScore map[int]int) int {
   for _,space := range minimax.board.AvailableSpaces() {
     newspace,err := strconv.Atoi(space)
     if err != nil {
+      fmt.Println(err)
     }
 
     minimax.board.FillSpaceAt(newspace, minimax.tttRules.NextPlayerMark())
@@ -42,16 +44,13 @@ func (minimax Minimax) Move(depth int, bestScore map[int]int) int {
   }
 }
 
-func (minimax Minimax) MaxKeyValue(hashMap map[int]int) (key int, value int) {
-  keyToSave := 0
-  valueToSave := -1000
-
-  for k, v := range hashMap {
-    if v > valueToSave {
-      keyToSave = k
-      valueToSave = v
+func (minimax Minimax) MaxKeyValue(hashMap map[int]int) (keyToSave int, valueToSave int) {
+  valueToSave = -1000
+  for key, value := range hashMap {
+    if value > valueToSave {
+      keyToSave = key
+      valueToSave = value
     }
   }
-
   return keyToSave, valueToSave
 }
