@@ -61,7 +61,7 @@ func (game *Game) setPlayerMarks(players []Player, firstPlayerMark string) {
     game.player2.SetMark(game.tttRules.Mark("OMARK"))
     game.ui.PrintMsg("Great! Player 2, you will be 'o'!")
   } else {
-    game.player2.SetMark(game.tttRules.Mark("OMARK"))
+    game.player2.SetMark(game.tttRules.Mark("XMARK"))
     game.ui.PrintMsg("Great! Player 2, you will be 'x'!")
   }
 }
