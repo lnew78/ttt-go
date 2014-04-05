@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("TicTacToeRules", func() {
+var _ = Describe("TTTRules", func() {
   var board = NewBoard(9)
   var tttRules = NewRules(board)
 

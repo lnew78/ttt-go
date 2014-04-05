@@ -21,7 +21,7 @@ func (ui UI) GetInput() string {
   return input
 }
 
-func (ui UI) PrintBoard(tttRules TicTacToeRules) {
+func (ui UI) PrintBoard(tttRules TTTRules) {
   row1, row2, row3 := tttRules.Rows()
   rows := [][]string{row1, row2, row3}
   for index1 := range rows {

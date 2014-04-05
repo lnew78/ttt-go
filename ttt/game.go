@@ -9,14 +9,14 @@ import(
 type Game struct {
   ui UI
   playerGenerator PlayerGenerator
-  tttRules TicTacToeRules
+  tttRules TTTRules
   board *Board
   minimax *Minimax
   player1 Player
   player2 Player
 }
 
-func NewGame(ui *UI, playerGenerator PlayerGenerator, tttRules TicTacToeRules, board *Board, minimax *Minimax) *Game {
+func NewGame(ui *UI, playerGenerator PlayerGenerator, tttRules TTTRules, board *Board, minimax *Minimax) *Game {
   game := new(Game)
   game.board = board
   game.minimax = minimax

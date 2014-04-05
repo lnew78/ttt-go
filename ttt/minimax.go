@@ -7,10 +7,10 @@ import (
 
 type Minimax struct {
   board *Board
-  tttRules TicTacToeRules
+  tttRules TTTRules
 }
 
-func NewMinimax(board *Board, tttRules TicTacToeRules) *Minimax {
+func NewMinimax(board *Board, tttRules TTTRules) *Minimax {
   minimax := new(Minimax)
   minimax.board = board
   minimax.tttRules = tttRules
