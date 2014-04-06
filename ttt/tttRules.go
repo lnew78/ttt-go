@@ -48,11 +48,6 @@ func (tttRules TTTRules) Columns() ([]string, []string, []string) {
   return col1, col2, col3
 }
 
-func (tttRules TTTRules) appendColumn(col []string, index, rowLength int) []string {
-  col = append(col, tttRules.board.spaces[index], tttRules.board.spaces[index + rowLength], tttRules.board.spaces[index + (rowLength * 2)])
-  return col
-}
-
 func (tttRules TTTRules) Diagonals() ([]string, []string) {
   row1, row2, row3 := tttRules.Rows()
   rows := [][]string{row1, row2, row3}

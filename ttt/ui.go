@@ -12,6 +12,10 @@ func (ui UI) PrintMsg(message string) {
   fmt.Println(message)
 }
 
+func (ui UI) PrintMsgWithData(message, data string) {
+  fmt.Println(message, data)
+}
+
 func (ui UI) GetInput() string {
   in := bufio.NewReader(os.Stdin);
   input, err := in.ReadString('\n');

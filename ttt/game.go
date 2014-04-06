@@ -59,10 +59,10 @@ func (game *Game) setPlayerMarks(players []Player, firstPlayerMark string) {
   game.player1.SetMark(firstPlayerMark)
   if firstPlayerMark == game.tttRules.Mark("XMARK") {
     game.player2.SetMark(game.tttRules.Mark("OMARK"))
-    game.ui.PrintMsg("Great! Player 2, you will be 'o'!")
+    game.ui.PrintMsgWithData("Great! Player 2, you will be ", game.tttRules.Mark("OMARK"))
   } else {
     game.player2.SetMark(game.tttRules.Mark("XMARK"))
-    game.ui.PrintMsg("Great! Player 2, you will be 'x'!")
+    game.ui.PrintMsgWithData("Great! Player 2, you will be ", game.tttRules.Mark("XMARK"))
   }
 }
 
@@ -90,7 +90,8 @@ func (game Game) getPlayerMove(player Player) int {
     game.ui.PrintMsg("I'm thinking of a move.  One moment please...")
     return game.minimax.Move(0, make(map[int]int))
   } else {
-    move := game.getNumericInput("Make your move.....")
+    game.ui.PrintMsgWithData(player.Mark(), "it's your turn")
+    move := game.getNumericInput("Make your move...")
     if game.board.IsSpaceAvailableAt(move) {
       return move
     }
@@ -110,7 +111,7 @@ func (game Game) getNumericInput(message string) int {
 }
 
 func (game Game) firstPlayerToMakeMove() Player {
-  if game.player1.Mark() == "x" {
+  if game.player1.Mark() == game.tttRules.Mark("XMARK") {
     return game.player1
   } else {
     return game.player2
@@ -118,7 +119,7 @@ func (game Game) firstPlayerToMakeMove() Player {
 }
 
 func (game Game) secondPlayerToMakeMove() Player {
-  if game.player1.Mark() == "o" {
+  if game.player1.Mark() == game.tttRules.Mark("OMARK") {
     return game.player1
   } else {
     return game.player2
@@ -126,6 +127,10 @@ func (game Game) secondPlayerToMakeMove() Player {
 }
 
 func (game Game) endGame() {
-  game.ui.PrintMsg("Game Over. Blah blah blah")
+  if game.tttRules.IsTie() {
+    game.ui.PrintMsg("It's a tie! You got lucky.")
+  } else {
+    game.ui.PrintMsgWithData(game.tttRules.Winner(), "wins!")
+  }
   os.Exit(0)
 }
