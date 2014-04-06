@@ -34,15 +34,35 @@ func (tttRules TTTRules) Rows() ([]string, []string, []string) {
 }
 
 func (tttRules TTTRules) Columns() ([]string, []string, []string) {
-  col1 := []string{tttRules.board.spaces[0], tttRules.board.spaces[3], tttRules.board.spaces[6]}
-  col2 := []string{tttRules.board.spaces[1], tttRules.board.spaces[4], tttRules.board.spaces[7]}
-  col3 := []string{tttRules.board.spaces[2], tttRules.board.spaces[5], tttRules.board.spaces[8]}
+  row1, row2, row3 := tttRules.Rows()
+  rows := [][]string{row1, row2, row3}
+  col1 := []string{}
+  col2 := []string{}
+  col3 := []string{}
+
+  for i := 0; i < len(rows); i++ {
+    col1 = append(col1, rows[i][0])
+    col2 = append(col2, rows[i][1])
+    col3 = append(col3, rows[i][2])
+  }
   return col1, col2, col3
 }
 
+func (tttRules TTTRules) appendColumn(col []string, index, rowLength int) []string {
+  col = append(col, tttRules.board.spaces[index], tttRules.board.spaces[index + rowLength], tttRules.board.spaces[index + (rowLength * 2)])
+  return col
+}
+
 func (tttRules TTTRules) Diagonals() ([]string, []string) {
-  diag1 := []string{tttRules.board.spaces[0], tttRules.board.spaces[4], tttRules.board.spaces[8]}
-  diag2 := []string{tttRules.board.spaces[2], tttRules.board.spaces[4], tttRules.board.spaces[6]}
+  row1, row2, row3 := tttRules.Rows()
+  rows := [][]string{row1, row2, row3}
+  diag1 := []string{}
+  diag2 := []string{}
+
+  for i := 0; i < len(rows); i++ {
+    diag1 = append(diag1, rows[i][i])
+    diag2 = append(diag2, rows[i][2 - i])
+  }
   return diag1, diag2
 }
 
