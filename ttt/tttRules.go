@@ -1,6 +1,9 @@
 package ttt
 
-import "strings"
+import(
+  "strings"
+  "math"
+)
 
 type TTTRules struct {
   board *Board
@@ -17,9 +20,16 @@ func NewRules(board *Board) TTTRules {
 }
 
 func (tttRules TTTRules) Rows() ([]string, []string, []string) {
-  row1 := []string{tttRules.board.spaces[0], tttRules.board.spaces[1], tttRules.board.spaces[2]}
-  row2 := []string{tttRules.board.spaces[3], tttRules.board.spaces[4], tttRules.board.spaces[5]}
-  row3 := []string{tttRules.board.spaces[6], tttRules.board.spaces[7], tttRules.board.spaces[8]}
+  row1 := []string{}
+  row2 := []string{}
+  row3 := []string{}
+
+  rowLength := int(math.Sqrt(float64(tttRules.board.numberOfSpaces)))
+  for i := 0; i < rowLength; i++ {
+    row1 = append(row1, tttRules.board.spaces[i])
+    row2 = append(row2, tttRules.board.spaces[rowLength + i])
+    row3 = append(row3, tttRules.board.spaces[(rowLength * 2) + i])
+  }
   return row1, row2, row3
 }
 
