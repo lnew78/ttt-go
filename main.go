@@ -1,6 +1,6 @@
 package main
 
-import "ttt-go/ttt"
+import "github.com/lnew78/ttt-go/ttt"
 
 func main() {
   board := ttt.NewBoard(9)

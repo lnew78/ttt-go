@@ -1,7 +1,7 @@
 package ttt_test
 
 import (
-  . "ttt-go/ttt"
+  . "github.com/lnew78/ttt-go/ttt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
