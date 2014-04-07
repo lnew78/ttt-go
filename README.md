@@ -1,6 +1,7 @@
 #Unbeatable Tic Tac Toe in Go
 
 ## Setup
+
 If you don't have it already, install Go 1.2 by running:
 *Note* If you have a previous version of Go, you will need to [uninstall](http://golang.org/doc/install#uninstall) it first
 
@@ -8,7 +9,7 @@ If you don't have it already, install Go 1.2 by running:
     brew install go
     ```
 
-set the GOPATH -- make sure your .profile or .bashprofile is updated as well
+Set the GOPATH -- make sure your .profile or .bashprofile is updated as well
 
     ```
     $ mkdir $HOME/go
@@ -16,7 +17,7 @@ set the GOPATH -- make sure your .profile or .bashprofile is updated as well
     $ export PATH=$PATH:$GOPATH/bin
     ```
 
-for additional info on setting the GOPATH, go [here](http://golang.org/doc/code.html#GOPATH)
+For additional info on setting the GOPATH, go [here](http://golang.org/doc/code.html#GOPATH)
 
 ## Project Installation
 
@@ -40,14 +41,18 @@ You should now be able to run the following commands from command line:
     ```
 
 ##Running the Game
-simply enter the following from anywhere on the command line:
+
+Simply enter the following from anywhere on the command line:
+
     ```
     ttt-go
     ```
+
 ##Running the tests
-from the project root, run:
+
+From the project root, run:
     ```
-    ginkgo -v ttt  #for verbose
+    ginkgo -v ttt      # for verbose
     or
-    ginkgo ttt  #just for test results
+    ginkgo ttt         # just for test results
     ```
