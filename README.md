@@ -2,6 +2,7 @@
 
 ## Setup
 If you don't have it already, install Go 1.2 by running:
+*Note* If you have a previous version of Go, you will need to [uninstall](http://golang.org/doc/install#uninstall) it first
 
     ```
     brew install go
