@@ -42,7 +42,7 @@ func (board *Board) IsSpaceAvailableAt(space int) bool {
 }
 
 func (board *Board) IsFull() bool {
-    return board.spaceAvailableCount() == 0
+  return board.spaceAvailableCount() == 0
 }
 
 func (board *Board) NumberOfAvailableSpaces() int {
