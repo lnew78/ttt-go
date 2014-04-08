@@ -32,7 +32,7 @@ func NewGame(board *Board, tttRules TTTRules, playerGenerator PlayerGenerator, u
 }
 
 func (game Game) playerCount() int {
-  numberOfPlayers := game.ui.GetNumericInput("How many players are playing? -- Type '1' or '2' and press [Enter].")
+  numberOfPlayers := game.ui.GetNumericInput("How many human players are playing? -- Type '1' or '2' and press [Enter].")
   if numberOfPlayers == 1 || numberOfPlayers == 2 {
     return numberOfPlayers
   }
