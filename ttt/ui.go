@@ -4,6 +4,8 @@ import(
   "fmt"
   "bufio"
   "os"
+  "strconv"
+  "strings"
 )
 
 type UI struct{}
@@ -23,6 +25,17 @@ func (ui UI) GetInput() string {
     fmt.Println(err)
   }
   return input
+}
+
+func (ui UI) GetNumericInput(message string) int {
+  ui.PrintMsg(message)
+  input := strings.TrimSuffix(ui.GetInput(), "\n")
+
+  number, err := strconv.Atoi(input)
+  if err != nil {
+    return ui.GetNumericInput(message)
+  }
+  return number
 }
 
 func (ui UI) PrintBoard(tttRules TTTRules) {

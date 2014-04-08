@@ -1,7 +1,6 @@
 package ttt
 
 import(
-  "strconv"
   "strings"
   "os"
 )
@@ -33,7 +32,7 @@ func NewGame(board *Board, tttRules TTTRules, playerGenerator PlayerGenerator, u
 }
 
 func (game Game) playerCount() int {
-  numberOfPlayers := game.getNumericInput("How many players are playing? -- Type '1' or '2' and press [Enter].")
+  numberOfPlayers := game.ui.GetNumericInput("How many players are playing? -- Type '1' or '2' and press [Enter].")
   if numberOfPlayers == 1 || numberOfPlayers == 2 {
     return numberOfPlayers
   }
@@ -90,23 +89,12 @@ func (game Game) getPlayerMove(player Player) int {
     return game.minimax.Move(0, make(map[int]int))
   } else {
     game.ui.PrintMsgWithData(player.Mark(), "it's your turn")
-    move := game.getNumericInput("Make your move...")
+    move := game.ui.GetNumericInput("Make your move...")
     if game.board.IsSpaceAvailableAt(move) {
       return move
     }
     return game.getPlayerMove(player)
   }
-}
-
-func (game Game) getNumericInput(message string) int {
-  game.ui.PrintMsg(message)
-  input := strings.TrimSuffix(game.ui.GetInput(), "\n")
-
-  number, err := strconv.Atoi(input)
-  if err != nil {
-    return game.getNumericInput(message)
-  }
-  return number
 }
 
 func (game Game) firstPlayerToMakeMove() Player {
