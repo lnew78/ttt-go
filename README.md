@@ -27,11 +27,9 @@ You should now be able to run the following commands from command line:
 ###Get the project
 
 ```
-$ go get github.com/lnew78/ttt-go/ttt
-
-$ cd $GOPATH/src/github.com/lnew78/ttt-go
-
-$ go install
+go get github.com/lnew78/ttt-go/ttt
+cd $GOPATH/src/github.com/lnew78/ttt-go
+go install
 ```
 
 ###Get the testing framework
