@@ -45,7 +45,8 @@ func (game Game) generatePlayers(playerCount int) []Player {
 
 func (game Game) getMarkChoice() string {
   game.ui.PrintMsg("Player 1, choose your mark. -- Type 'x' or 'o' and press [Enter].")
-  input := strings.TrimSuffix(game.ui.GetInput(), "\n")
+  rawInput := strings.TrimSuffix(game.ui.GetInput(), "\n")
+  input := strings.ToLower(rawInput)
   if game.tttRules.IsMarkValid(input) {
     return input
   } else {
