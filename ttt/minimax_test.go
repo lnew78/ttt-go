@@ -24,7 +24,7 @@ var _ = Describe("Minimax", func() {
     Expect(minimax.Move(0, bestScore)).To(Equal(7))
   })
 
-  It("Block the oppenent from winning", func() {
+  It("Block the opponent from winning", func() {
     board.InitializeSpaces()
     board.FillSpaceAt(1, "x")
     board.FillSpaceAt(5, "o")
@@ -42,7 +42,7 @@ var _ = Describe("Minimax", func() {
     Expect(minimax.Move(0, bestScore)).To(Equal(7))
   })
 
-  It("Defend the corner trap", func() {
+  It("Defend the corners trap", func() {
     board.InitializeSpaces()
     board.FillSpaceAt(1, "x")
     board.FillSpaceAt(5, "o")

@@ -53,7 +53,7 @@ var _ = Describe("TTTRules", func() {
      Expect(tttRules.IsTie()).To(Equal(true))
     })
 
-    It("is not a tie game if the board isn't full and there is no winner", func() {
+    It("Is not a tie game if the board isn't full and there is no winner", func() {
       board.InitializeSpaces()
 
       board.FillSpaceAt(8, "x")
@@ -95,14 +95,14 @@ var _ = Describe("TTTRules", func() {
     })
   })
 
-  It("'O' makes move if available space count is even", func() {
+  It("'o' makes move if available space count is even", func() {
     board.InitializeSpaces()
     board.FillSpaceAt(5, "x")
 
     Expect(tttRules.NextPlayerMark()).To(Equal("o"))
   })
 
-  It("'X' makes moves if available space count is even", func() {
+  It("'x' makes moves if available space count is even", func() {
     board.InitializeSpaces()
 
     Expect(tttRules.NextPlayerMark()).To(Equal("x"))

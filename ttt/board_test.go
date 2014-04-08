@@ -9,7 +9,7 @@ import (
 var _ = Describe("Board", func() {
   var board = NewBoard(9)
 
-    It("Spacs start at 1 and end at board size", func() {
+    It("Spaces start at 1 and end at board size", func() {
       testArray :=  []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 
       Expect(board.Spaces()).To(Equal(testArray))
@@ -30,7 +30,7 @@ var _ = Describe("Board", func() {
       Expect(board.Spaces()).To(Equal(testArray))
     })
 
-    It("Full when all spaces are filled", func() {
+    It("Board is full when all spaces are filled", func() {
       board.FillSpaceAt(1, "x")
       board.FillSpaceAt(2, "o")
       board.FillSpaceAt(3, "x")
@@ -44,7 +44,7 @@ var _ = Describe("Board", func() {
       Expect(board.IsFull()).To(Equal(true))
     })
 
-    It("Not full when all spaces are not filled", func() {
+    It("Board not full when all spaces are not filled", func() {
       board.InitializeSpaces()
       board.FillSpaceAt(5, "o")
 
@@ -58,7 +58,7 @@ var _ = Describe("Board", func() {
       Expect(board.NumberOfAvailableSpaces()).To(Equal(8))
     })
 
-    It("Get list of availlable spaces", func() {
+    It("Get list of available spaces", func() {
       board.InitializeSpaces()
       testArray :=  []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}
       Expect(board.AvailableSpaces()).To(Equal(testArray))

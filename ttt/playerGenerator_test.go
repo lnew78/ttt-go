@@ -21,5 +21,4 @@ var _ = Describe("PlayerGenerator", func() {
     testPlayerArray := []Player{testPlayer1, testPlayer2}
     Expect(pg.GeneratePlayers(2)).To(Equal(testPlayerArray))
   })
-
 })
