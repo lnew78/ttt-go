@@ -6,9 +6,9 @@ If you don't have it already, install Go 1.2 by running the command below.
 
 *Note* If you have a previous version of Go, you will need to [uninstall](http://golang.org/doc/install#uninstall) it first
 
-    ```
-    brew install go
-    ```
+```Go
+brew install go
+```
 
 Set the GOPATH -- make sure your .profile or .bashprofile is updated as well
 
