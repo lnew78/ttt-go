@@ -14,11 +14,6 @@ var _ = Describe("Player", func() {
     Expect(player.Mark()).To(Equal("x"))
   })
 
-  It("Player's move can be set and retrieved", func() {
-    player.SetMove(1)
-    Expect(player.Move()).To(Equal(1))
-  })
-
   It("Player's type can be retrieved", func() {
     Expect(player.Type).To(Equal("human"))
     player2 := Player{Type:"computer"}
