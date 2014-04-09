@@ -55,7 +55,6 @@ var _ = Describe("TTTRules", func() {
 
     It("Is not a tie game if the board isn't full and there is no winner", func() {
       board.InitializeSpaces()
-
       board.FillSpaceAt(8, "x")
       board.FillSpaceAt(9, "o")
 
@@ -66,7 +65,6 @@ var _ = Describe("TTTRules", func() {
   Context("Determine a winner", func() {
     It("Check rows", func() {
       board.InitializeSpaces()
-
       board.FillSpaceAt(1, "x")
       board.FillSpaceAt(2, "x")
       board.FillSpaceAt(3, "x")
@@ -76,7 +74,6 @@ var _ = Describe("TTTRules", func() {
 
     It("Check columns", func() {
       board.InitializeSpaces()
-
       board.FillSpaceAt(2, "o")
       board.FillSpaceAt(5, "o")
       board.FillSpaceAt(8, "o")
@@ -86,7 +83,6 @@ var _ = Describe("TTTRules", func() {
 
     It("Check diagonals", func() {
       board.InitializeSpaces()
-
       board.FillSpaceAt(3, "x")
       board.FillSpaceAt(5, "x")
       board.FillSpaceAt(7, "x")
@@ -110,7 +106,6 @@ var _ = Describe("TTTRules", func() {
 
   It("Game is over if there's a winner", func() {
     board.InitializeSpaces()
-
     board.FillSpaceAt(1, "x")
     board.FillSpaceAt(2, "x")
     board.FillSpaceAt(3, "x")

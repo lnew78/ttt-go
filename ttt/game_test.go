@@ -12,7 +12,6 @@ var _ = Describe("Game", func() {
   var player2 = players[1]
   var game = Game{player1:player1, player2:player2}
 
-
   It("Set the player's marks", func() {
 
     game.setPlayerMarks(players, "x")

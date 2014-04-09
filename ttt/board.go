@@ -17,7 +17,7 @@ func NewBoard(size int) *Board {
 }
 
 func (board *Board) InitializeSpaces() {
-  board.spaces = make( []string, board.numberOfSpaces)
+  board.spaces = make([]string, board.numberOfSpaces)
   for i := range  board.spaces {
     board.spaces[i] = strconv.Itoa(i + 1)
   }
